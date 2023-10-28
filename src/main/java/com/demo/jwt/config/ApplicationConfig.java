@@ -1,5 +1,6 @@
 package com.demo.jwt.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class ApplicationConfig {
 	
+	@Autowired
 	private final UserRepository userRepository;
 	
 	@Bean
@@ -35,7 +37,7 @@ public class ApplicationConfig {
 		authenticationProvider.setUserDetailsService(userDetailsService());
 		authenticationProvider.setPasswordEncoder(passwordEncoder());
 		
-		return authenticationProvider();
+		return authenticationProvider;
 	}
 	
 	@Bean
